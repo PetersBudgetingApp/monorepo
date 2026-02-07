@@ -74,8 +74,7 @@ Commands above passed. Docker image builds for both `backend` and `frontend` als
 1. No user-facing recurring bills feature, despite backend support.
 2. No user-facing transfer pairing/unpairing feature, despite backend support.
 3. No user-facing categorization-rule management (rules can only be managed internally/direct DB today).
-4. Backend automated tests are still sparse in many areas (improved for transaction category clear behavior in this pass, but broader service/controller coverage is still needed).
-5. There is no user-facing "backfill diagnostics" UI to explain why historical imports stop at a specific date.
+4. There is no user-facing "backfill diagnostics" UI to explain why historical imports stop at a specific date.
 
 ## Verified SimpleFIN History Findings (Feb 7, 2026)
 
@@ -94,11 +93,11 @@ Commands above passed. Docker image builds for both `backend` and `frontend` als
 
 ## Recommended Roadmap
 
-### Phase 1: Close correctness gaps (high impact, low-medium effort)
+### Phase 1: Close correctness gaps (high impact, low-medium effort) — COMPLETED
 
 1. Completed Feb 7, 2026: allow clearing a transaction category (`categoryId: null`) in transaction update flow.
-2. Standardize auth/security error payloads for unauthenticated requests.
-3. Add backend tests for Auth, Categories, Transactions, Analytics services/controllers.
+2. Completed Feb 7, 2026: standardized auth/security error payloads — unauthenticated requests now return `{ status: 401, message, timestamp }` JSON instead of default Spring error pages; access-denied returns `{ status: 403, message, timestamp }`.
+3. Completed Feb 7, 2026: added comprehensive backend tests (117 tests across 16 test classes) covering Auth, Categories, Transactions, Analytics, Budgets, Accounts, Transfers, Recurring, CategoryView, GlobalExceptionHandler, SecurityErrorHandler, and JwtService.
 
 ### Phase 2: Ship hidden backend value in UI
 

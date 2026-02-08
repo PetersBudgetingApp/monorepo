@@ -76,7 +76,7 @@ Use this file first if you start in `/Users/petergelgor/Documents/projects/budge
 - `/recurring`
   - Uses `/recurring` GET, `/recurring/detect` POST, `/recurring/upcoming` GET, `/recurring/{id}` PATCH/DELETE.
 - `/accounts/:id`
-  - Uses `/accounts/{id}` GET, `/transactions` GET (filtered by accountId).
+  - Uses `/accounts/{id}` GET, `/accounts/{id}/net-worth-category` PATCH, `/transactions` GET (filtered by accountId).
 
 ## Current Product Contract Boundaries
 - Backend is source of truth for users, connections, accounts, categories, transactions, transfers, analytics, recurring patterns, and budget targets.

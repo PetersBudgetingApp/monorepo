@@ -132,7 +132,8 @@ Commands above passed. Docker image builds for both `backend` and `frontend` als
 cp .env.example .env
 ```
 
-2. Optionally update `JWT_SECRET` and `ENCRYPTION_SECRET` in `.env`.
+2. Optionally update `JWT_SECRET` in `.env`.
+   `ENCRYPTION_SECRET` is now auto-generated on first backend start and persisted in a Docker volume.
 
 3. If you access the app remotely (DDNS/Tailscale), set `APP_CORS_ALLOWED_ORIGINS` in the same root `.env`.
    Example:
@@ -178,4 +179,5 @@ docker compose down -v
 
 - Flyway migrations run automatically when backend starts.
 - PostgreSQL data persists in the `postgres_data` Docker volume.
+- Backend encryption key persists in the `backend_secrets` Docker volume.
 - Frontend API calls are proxied through Nginx to backend (`/api/*`).

@@ -1,0 +1,33 @@
+# Git
+.git
+**/.git
+
+# Dependencies & build output
+frontend/node_modules
+backend/target
+
+# IDE / OS
+.idea
+.vscode
+*.iml
+.DS_Store
+Thumbs.db
+
+# Docker
+**/docker-compose*.yml
+**/.dockerignore
+
+# Tests & docs (not needed in image)
+frontend/tests
+frontend/test-results
+frontend/playwright.config.ts
+frontend/vitest.config.ts
+docs
+*.md
+!frontend/README.md
+
+# iOS app
+BudgettingApp
+
+# Notes
+**/notes_to_agent

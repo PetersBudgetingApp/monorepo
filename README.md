@@ -124,7 +124,14 @@ Commands above passed. Docker image builds for both `backend` and `frontend` als
 2. Add CI gates for `mvn test`, `npm test`, `npm run typecheck`, `npm run build`, `npm run e2e`.
 3. Add seed/demo mode for local product walkthrough without real bank connectivity.
 
-## Quick Start (Recommended)
+## Quick Start
+
+Choose one:
+
+- **Docker Compose** (3 containers: frontend, backend, postgres)
+- **All-in-one image** (1 container: frontend + backend + postgres)
+
+## Option A: Docker Compose (recommended for development)
 
 1. Copy the env template:
 
@@ -153,11 +160,33 @@ Open:
 - App: [http://localhost:3000](http://localhost:3000)
 - API (via frontend proxy): [http://localhost:3000/api/v1](http://localhost:3000/api/v1)
 
+## Option B: Single container (easy sharing via `docker run`)
+
+This mode packages **PostgreSQL + backend + frontend** into one container managed by a supervisor.
+
+### Build the all-in-one image
+
+```bash
+docker build -t budgeting-app -f all-in-one/Dockerfile .
+```
+
+### Run it
+
+```bash
+docker run -d \
+  -p 3000:80 \
+  -v budget-data:/var/lib/postgresql/data \
+  -v budget-secrets:/var/lib/budget-secrets \
+  --name budget \
+  budgeting-app
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
 ## Networking Notes
 
-- The backend container is intentionally not exposed on a host port by default.
-- Browser API requests go through frontend Nginx (`/api/*` -> backend service on Docker network).
-- This avoids local `8080` conflicts and keeps trial setup simpler.
+- In Docker Compose, the backend is exposed on `${BACKEND_PORT:-8080}` for convenience, but the browser UI still talks to it via the frontend proxy (`/api/*`).
+- In the all-in-one image, the backend is internal-only and is reached via Nginx proxying to `localhost:8080` inside the container.
 
 ## Useful Commands
 

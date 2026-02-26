@@ -120,7 +120,8 @@ Delete app data through:
 
 - iOS Settings → Apple ID → iCloud → Manage Storage  
 or  
-- By removing app data within Velum (if available)
+- By removing app data within Velum
+    - Velum → Settings → Backend Connection → Reset iCloud Backend Data
 
 ### Self-hosted users
 Delete data directly from your backend database or server.

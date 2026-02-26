@@ -85,3 +85,25 @@ Open:
 
 - In Docker Compose, the backend is exposed on `${BACKEND_PORT:-8080}` for convenience, but the browser UI still talks to it via the frontend proxy (`/api/*`).
 - In the all-in-one image, the backend is internal-only and is reached via Nginx proxying to `localhost:8080` inside the container.
+
+
+## Demo / example user
+
+A pre-populated demo account is created automatically on first startup via Flyway migration. It contains 12 months of realistic financial data (March 2025 – February 2026) so testers can explore all app features immediately.
+
+| | |
+|---|---|
+| **Email** | `example.user@test.com` |
+| **Password** | `example-user-password1` |
+
+What's included:
+
+- **6 accounts** – checking, savings, credit card, auto loan, brokerage, vacation fund (covers all account types and net-worth categories)
+- **~420 transactions** – salary, rent, groceries, gas, streaming, restaurants, Amazon, travel, transfers, and more
+- **3 custom categories** – Side Hustle, Loan Payments, Date Night
+- **8 custom categorization rules** – Trader Joe's, Olive Garden, Petco, State Farm, Blue Cross, Oakwood Rent, Capital One Auto, City Electric
+- **6 months of budget targets** – across groceries, restaurants, coffee, gas, clothing, streaming, and more
+- **13 recurring patterns** – salary, rent, Netflix, Spotify, Disney+, Verizon, Comcast, Planet Fitness, iCloud, health/car insurance, car loan
+- **24 linked transfer pairs** – checking → savings and checking → credit card payments
+
+Every self-hosted user can log in with these credentials to see a fully populated dashboard, transaction history, budget insights, and recurring bills.
